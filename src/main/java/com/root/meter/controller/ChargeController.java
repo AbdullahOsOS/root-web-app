@@ -2,7 +2,6 @@ package com.root.meter.controller;
 
 import com.root.meter.DTO.ChargeRequest;
 import com.root.meter.model.Payment;
-import com.root.meter.service.MeterService;
 import com.root.meter.service.PaymentService;
 import com.root.meter.service.StripeService;
 import com.stripe.exception.StripeException;
@@ -28,22 +27,16 @@ public class ChargeController {
     @Autowired
     private StripeService stripPaymentsService;
     @Autowired
-    private MeterService meterService;
-    @Autowired
     private PaymentService paymentService;
 
     @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model)
             throws StripeException {
         chargeRequest.setCurrency(ChargeRequest.Currency.EUR);
-        System.out.println("charge. before charge");
         Charge charge = stripPaymentsService.charge(chargeRequest);  //perform charge on strip and get the result
-        System.out.println("charge. after charge");
-
         //generate receipt and reset all the debt(amount$ and energy)
         Payment payment_receipt = paymentService.save(chargeRequest);
         model.addAttribute("payment", payment_receipt);
-        System.out.println("charge. saved charge");
 
         return "paymentResult";
     }

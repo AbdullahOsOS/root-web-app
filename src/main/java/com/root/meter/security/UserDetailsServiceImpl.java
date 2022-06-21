@@ -1,13 +1,15 @@
 package com.root.meter.security;
 
 
+import com.root.meter.constants.Constants;
 import com.root.meter.model.Users;
-import com.root.meter.repo.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 
@@ -19,12 +21,11 @@ import java.util.Collections;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UserRepo userRepository;
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = userRepository.findByName(username);
+        WebClient webClient = WebClient.create(Constants.USER_API_FIND_BY_NAME +username);
+        Mono<ResponseEntity<Users>> res = webClient.get().retrieve().toEntity(Users.class);
+        Users user = res.block().getBody();
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ChartController {
-    @GetMapping("/chart")
+    @GetMapping("/me/chart")
     public String getChart(){
         return "chart";
     }

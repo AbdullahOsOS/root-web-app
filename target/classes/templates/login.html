@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/login.css}">
-    <link rel='icon' href="images/icon.png">
-    <link rel='icon' href="image/icon.png">
+    <link rel='icon' th:href="@{images/icon.png}">
 
 </head>
     <body class="one">
@@ -37,9 +36,6 @@
                     </div>
                 </form>
             </div>
-            <div class="text-box">
-                <h1>/root</h1>
-            </div>
             <p>
                 <span id="lat"></span><br>
                 <span id="lon"></span>
@@ -68,7 +64,7 @@
                 })
                 .then(data => {
                                if(data.access_token){
-                                    displayConsumption('https://rooot.azurewebsites.net/chart',data.access_token);
+                                    displayConsumption('http://localhost:9191/me?userId='+data.userId,data.access_token);
                                }
                                else{
                                 var res = document.getElementById('result')
