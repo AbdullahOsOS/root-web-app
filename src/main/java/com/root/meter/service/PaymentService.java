@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @Service
+@Transactional
 public class PaymentService {
     @Autowired
     private PaymentRepo paymentRepo;
@@ -24,10 +26,11 @@ public class PaymentService {
         Mono<ResponseEntity<Users>> res = webClient.get().retrieve().toEntity(Users.class);
         Users user = res.block().getBody();
 
-        Payment payment = new Payment(new Double(amount), user, LocalDate.now());
         //reset debt of meter if success
         user.getMeter().setDebt(0.0);
         user.getMeter().setEnergyDebt(0.0);
+        Payment payment = new Payment(new Double(amount), user, LocalDate.now());
+
         return paymentRepo.save(payment);
     }
     public Payment get(Long userId){
