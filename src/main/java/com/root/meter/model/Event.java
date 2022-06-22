@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 //{ "meterId", 1, "event": "5","type":"Tampering","date":"Wed Feb 23 22:37:02 2022"}
 @Entity

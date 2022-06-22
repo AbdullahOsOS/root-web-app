@@ -1,7 +1,10 @@
 package com.root.meter.controller;
 
 import com.root.meter.DTO.ChargeRequest;
+import com.root.meter.DTO.MeterDTO;
+import com.root.meter.DTO.UserDTO;
 import com.root.meter.constants.Constants;
+import com.root.meter.model.Meter;
 import com.root.meter.model.Users;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +24,14 @@ public class CheckoutController {
     public String checkout(Model model, Authentication auth) {
         //get the amount to be charged
         WebClient webClient = WebClient.create(Constants.USER_API_FIND_BY_NAME +auth.getName());
-        Mono<ResponseEntity<Users>> res = webClient.get().retrieve().toEntity(Users.class);
-        Users user = res.block().getBody();
-        double amount = user.getMeter().getDebt(); //in dollars
+        Mono<ResponseEntity<UserDTO>> res = webClient.get().retrieve().toEntity(UserDTO.class);
+        UserDTO user = res.block().getBody();
+
+        WebClient webClientOfMeter = WebClient.create(Constants.METER_API_GET_BY_ID + user.getMeterId());
+        Mono<ResponseEntity<MeterDTO>> meterMono = webClientOfMeter.get().retrieve().toEntity(MeterDTO.class);
+        MeterDTO meter = meterMono.block().getBody();
+
+        double amount = meter.getDebt(); //in dollars
         amount *=  100;
         model.addAttribute("userId",user.getId());
         model.addAttribute("amount", (int)amount); // in cents
