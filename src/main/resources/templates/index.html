@@ -1,114 +1,270 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-        <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
-        <link th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap}" rel="stylesheet">
-        <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
-        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
-        <link rel="stylesheet" th:href="@{https://unpkg.com/aos@next/dist/aos.css}">
-        <title>Home</title>
-        <link rel='icon' th:href="@{images/icon.png}">
-    </head>
-<!------------------------------------------------ navbar ---------------------------------------------------->
-    <body class="two">
-        <section class="aboutheader">
-        <nav>
-            <!--<input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-            <i class="fa-solid fa-bars"></i>
-            </label>-->
-            <ul>
-                <li> <a class="active" href="#" >HOME</a></li>
-                <li> <a href="#">ABOUT</a></li>
-                <li> <a href="#">CONTACT</a></li>
-                <li> <a href="/login">LOGIN</a></li>
+<head>
+    <style>
+        body
+        {
+            margin: 0;
+            padding: 0;
+        }
+        .navv
+        {
+            position: sticky;
+            top: 0;
+        }
+        #slider
+        {
+            overflow: hidden;
+        }
+        #slider figure
+        {
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            animation: 15s slider infinite;
+        }
+        #slider figure img
+        {
+            width: 20%;
+            float: left;
+            
+        }
+        @keyframes slider
+        {
+            0%
+            {
+                left: 0;
+            }
+           20%
+            {
+                left: 0;
+            }
+            25%
+            {
+                left: -100%;
+            }
+            45%
+            {
+                left:-100%;
+            }
+            50%
+            {
+                left:-200%;
+            }
+            70%
+            {
+                left:-200%;
+            }
+            75%
+            {
+                left:-300%;
+            }
+            95%
+            {
+                left:-300%;
+            }
+            100%
+            {
+                left:-400%;
+            }
+        }
+        #rightimg
+        {
+            background-color: white;
+            width: 50%;
+            float: right;
+            height: 400px;
+        }
+        .rightimg1
+        {
+            width: 50%;
+            height: 700px;
+            margin-left: 0;
+            margin-top:  10px;
+            border-radius: 20px 100px /100px;
+        }
+        .rightimg2
+        {
+            width: 50%;
+            height: 700px;
+            margin-left: 70px;
+            float: right;
+            border-radius: 50%;
+            box-shadow: 1px 2px 10px 1px rgb(118, 152, 237);
+        }
+        .leftparag
+        {
+            padding-left: 0px;
+            padding-right: 30px;
+            padding-top:5px;
+            font-family: monospace;
+            font-size: large;            
+            margin-right: 20px;
+            margin-left: 0;
+            height: 700px;
+            margin-bottom: 0;
+        }
+        .parag1
+        {
+            background-color: #035397;
+            width: 50%;
+            height: 600px;
+            margin-top: 0;
+            padding: 30px;
+            border-bottom-right-radius: 500px;
+            box-shadow: 1px 2px 10px 1px rgb(118, 152, 237);
+        }
+        .parag2
+        {
+            background-color:white;
+            width: 50%;
+            height: 700px;
+            margin: 0;
+            padding: 10px;
+            padding-left: 10px;
+        }
+        .divright
+        {
+            background-color: white;
+            width: 33.33%;
+            float: right;
+            height: 280px;
+        }
+        .divleft
+        {
+            background-color: white;
+            width: 33.33%;
+            float: left;
+            height: 280px;
+        }
+        .divmiddle
+        {
+            background-color: white;
+            width: 33.33%;
+            margin: 0 auto;
+            height: 280px;
+            float: inherit;
+        }
+        .rightcontentimg
+        {
+            height: 450px;
+            width: 33.33%;
+            margin-left: 10px;
+        }
+        .rightcontentparag
+        {
+            padding-left: 20px;
+            padding-right: 30px;
+            padding-top: 5px;
+            font-family: monospace;
+            font-size: large;
+        }
+        .threepics
+        {
+            margin-top: 0px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel='icon' href="images/icon.png">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Home page</title>
+</head>
+<body>
+    <div class="navv">
+    <nav>
+        <img src="images/White_LOGO.png">
+        <ul>
+            <li> <a class="active" href="#" >HOME</a></li>
+           <!-- <li> <a href="#">ABOUT</a></li>-->
+            <li> <a href="mailto:maihesham789@gmail.com?subject=Hello&body=I need help!">CONTACT US</a></li>
+            <li> <a href="login.html">LOGIN</a></li>
+        </ul>
+    </nav>
+</div>
+  
+<div class="rightimg">
+        <div class="rightimg1"> <img  src="images/meter3.jpg" alt="electricity" width="750px"></div>
+     </div>
+    <div class="leftparag">
+        <div class="parag1"> 
+            <h2><font color="white" align="justify"size="7" face="sans-serif">Electricity is <u> <font color="red">not</font></u> a free source</font></h2>
+            <br>
+            <p align="justify"><font color="white"align="justify"size="5" face="sans-serif">Electricity is the part and parcel of our modern life
+                and it is the most widely used form of energy. Man has learnt about electricity from nature as it is also
+                a basic part of nature. In the past, many cities and towns were built alongside
+                waterfalls (a primary source of mechanical energy) that turned water wheels to
+                perform work. Before electricity generation began over 100 years ago, houses were lit
+                with kerosene lamps, food was cooled in iceboxes, and rooms were warmed by woodburning 
+                or coal-burning stoves. </font></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<!-------------------------------------second part---------------------------------------------------->
+<div id="rightimg">
+    <div class="rightimg1"> <img  src="images/meter2.jpg" alt="electricity"  width="775px" ></div>
+ </div>
+<div class="leftparag">
+    <div class="parag2"> 
+        <h2><font color="#035397" align="justify"size="7" face="sans-serif">About the  <u> <font color="red">Smart Meters</font></u></font></h2>
+        <br>
+        <p align="justify"><font color="#035397"align="justify"size="5" face="sans-serif">A smart meter device for electric consumption which 
+            not only works as a meter to measure the energy consumption of a household, it also acts as a mesh network-based 
+            infrastructure to apply a concept of the next-generation of AMI (Advanced Metering Infrastructure) systems 
+            connected via a smart grid for cluster communication</font></p><br>
+            <h4 align="justify"><font color="#035397"align="justify"size="5" face="sans-serif">Smart Meters help in :</font></h4>
+            <ul><font color="#035397" align="justify"size="5" face="sans-serif">
+                <li>Electric utilities eliminate manual monthly meter readings</li>
+                <li> Avoid capital expenses of building new power plants</li>
+                <li>Optimize income with existing resources</li></font>
             </ul>
-        </nav> 
-        </section>
-        <div class="text-box" data-aos="fade-up" data-aos-once="false">
-            <h1><font color="035397">Next Generation</font></h1>
-            <h1><font color="035397">Smart Grid Meter</font></h1>  
-        </div>
-<!------------------------------------------------ Electricity ---------------------------------------------------->       
-         <div class="double">
-                <div class="div0" data-aos="fade-right" data-aos-once="false">
-                    <h2><font color="001E6C"> Electricity is </font></h2><h2><font color="red">not</font></h2>
-                    <h2><font color="001E6C"> a free resource</font></h2>
-                    <hr>
-                    <p>Every connection must be metered as it comes to the electricity meters.Home owners have the option of installing either a regular or a smart meter.
-                    Electricity meters are devices for electricity consumption measurements which have been used and are still in use today with modern technologies.</p>
-                </div>       
-                <div class="div1" data-aos="fade-left" data-aos-once="false">
-                     <img class="meterr" src="images/electricityinc3.png" alt="electricity" width="600px" height="350px">
-                </div>   
-                </div>
-<!---------------------------------------------------Smart meter------------------------------------------------------->
-        <section>
-            <div class="container">
-              
-                <div class="div2" data-aos="fade-up" data-aos-once="false">
-                   <strong><h1><font color="black">Smart Meter helps in:</font></h1></strong>
-                </div>
-                
-                <div class="double">
-                <div class="div3" data-aos="fade-right" data-aos-once="false">
-                    <h2><font color="001E6C">Smart metering helps electricity consumers: </font></h2>   
-                    <font color="06113C"> <hr></font>
-                    <p>- Adjust their habits and lower electricity bills.</p><br>
-                    <p>- Obtain more detailed feedback on electricity usage.</p><br>
-                    <p>- Optimize income with existing resources.</p><br>
-                    <p>- Dynamic pricing, raises or lowers the cost of electricity.</p><br>
-                    <p>- Reduce the number of system-wide electricity failures</p>
-                  
-                </div>       
-                <div class="div4" data-aos="fade-left" data-aos-once="false">
-                     <img class="meterr" src="images/meter.PNG" width="600px" height="350px"> 
-                </div>   
-                </div>
-                
-            </div>
-        </section>
-<!------------------------------------------Smart meter in enviroment--------------------------------------->
-           <div class="double">
-                <div class="div5" data-aos="fade-right" data-aos-once="false">
-                    <h2><font color="001E6C">Benefits of smart meters</font></h2>
-                    <font color="06113C"> <hr></font>
-                    <p><font color="06113C">Smart meters are improved versions of conventional power meters that are developed after AMR and AMI improvements.</font></p>
-                    <p><font color="06113C">In addition to metering features,smart meters are capable to calculate several parameters as power factor and to predict power consumption at particular intervals.</font></p>
-                    <p><font color="06113C">it also allows users to remote monitoring and remote control for their home energy management systems.</font></p>
-                </div>       
-                <div class="div6" data-aos="fade-left" data-aos-once="false">
-                     <img class="meterr" src="images/meter3.jpg"width="600px" height="350px"> 
-                </div>   
-            </div>
+</div>
+    <div class="threepics">  
+    <div class="divright">
+        <div class="rightcontentimg"> <img class="meterr" src="images/image3.jpg" alt="electricity" width="390px" height="280px"></div>
+     </div>
+    <div class="divleft">
+        <div class="rightcontentimg"> <img class="meterr" src="images/electricity3.jpg" alt="electricity" width="390px" height="280px"></div>
+    </div>
+    <div class="divmiddle">
+        <div class="rightcontentimg"> <img class="meterr" src="images/img6.jpeg" alt="electricity" width="390px" height="280px" border-radius="70px"></div>
+     </div>
+    </div>
+     <br>
+    <div id="divright">
+        <div class="rightcontentparag">
+            <font color="#035397"size="4" face="sans-serif"><p align="justify">Global electricity consumption has continued to go up rapidly at a rate faster than energy consumption. Between 1980 and 2013, the world’s annual electricity consumption rose from 7300 TWh to 22,100 TWh. Since the twenty first century, global electricity consumption has seen even faster growth, as evidenced by an average annual increase of 3.4%, 1.2 percentage points higher than average annual growth of energy consumption.</p></font></div>
+    </div>
+    <div id="divleft">
+    <div class="rightcontentparag">
+        <font color="#035397"size="4" face="sans-serif"><p align="justify">Electric energy consumption is the form of energy consumption that uses electrical energy. Electric energy consumption is the actual energy demand made on existing electricity supply for transportation, residential, industrial, commercial, and other miscellaneous purposes</p> </font> </div>
+    </div>
+    <div id="divmiddle">
+        <div class="rightcontentparag">
+            <font color="#035397"size="4" face="sans-serif"><p align="justify"><u><b>In a factory</b></u> total energy consumption can be measured by looking at how much energy a production process consumes, for example, by making car parts. This will include water, electricity, gas any energy source needed for the stuffed animals to be made.
+            In a household, energy consumption will include electricity, gas, water, and any other energy used to live in it.The energy consumption of a bus includes how much diesel or gasoline it uses to run.</p></font> </div>
+    </div>
+<br>
 <!------------------------------------------------------footer---------------------------------------------------------->
-            <footer>
-                <div class="footer-content">
-                    <h3>Next Generation Smart Grid Meter</h3>
-                    <p>Electricity can transform people's lives, not just economically but also socially</p>
-                    <ul class="socials">
-                        <li><a href="https://www.facebook.com/ElsewedyElectric/"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                    </ul>
-                </div>
-                <div class="footer-bottom">
-                    <p>copyright &copy; 2022 ElSewedy Electric</p>
-                </div>
-            </footer>
-<!------------------------------------------------------------------------------------------------------------------------------>
-        
-        <script src="https://unpkg.com/aos@next/dist/aos.js"> </script>
-        <script>
-            AOS.init({
-                duration:1000
-            });
-        </script>
-        
-        
-    </body>
+<footer>
+    <div class="footer-content">
+        <h3>Next Generation Smart Grid Meter</h3>
+        <p>Electricity can transform people's lives, not just economically but also socially</p>
+        <ul class="socials">
+            <li><a href="https://www.facebook.com/ElsewedyElectric/"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy; 2022 ElSewedy Electric</p>
+    </div>
+</footer>
+</body>
 </html>
