@@ -49,7 +49,7 @@ a.active,a:hover
 {
     background: #EEEEEE;
     transition: .5s;
-    color: #F24A72;
+    color: black;
     font-weight: bold;
 }
 .checkbtn
@@ -123,10 +123,6 @@ a.active,a:hover
     background-image: no-repeat;
     background-size: cover;
     height: calc(100vh - 80px);
-}
-.loginbackground
-{
-    background:url(images/background.jpg) no-repeat;
 }
 .loginnavbar
 {
@@ -555,7 +551,7 @@ input:focus{
 {
     background: #6d6c71;
     height: 1000px;
-    width: auto;
+    width: 100%;
     padding-top: 40px;
     color: #fff;
 }

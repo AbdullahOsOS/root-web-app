@@ -13,15 +13,49 @@
     <script th:href="@{https://kit.fontawesome.com/a076d05399.js}"></script>
     <title>Your Profile</title>
     <link rel='icon' href="images/icon.png">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #rightimg
+        {
+            background-color: white;
+            width: 50%;
+            float: right;
+            height: 400px;
+        }
+        .rightimg1
+        {
+            width: 50%;
+            height: 700px;
+            margin-left: 0;
+            border-radius: 20px 100px /100px;
+        }
+        .leftparag
+        {
+            padding-left: 100px;
+            padding-right: 50px;
+            padding-top:50px;
+            font-family: monospace;
+            font-size: large;
+            margin-right: 20px;
+            margin-left: 0;
+            height: 700px;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <section class="aboutheader">
+<div class="navv">
     <nav>
-        <img src="images/White_LOGO.png" class="logo">
+        <img src="images/White_LOGO.png">
         <ul>
             <li> <a class="active" href="#" >MY PROFILE</a></li>
+            <!-- <li> <a href="#">ABOUT</a></li>-->
             <li> <a href="/me/chart">MY CONSUMPTION</a></li>
             <li> <a href="me/bill">PAYMENT</a></li>
+            <li> <a href="mailto:maihesham789@gmail.com?subject=Hello&body=I need help!">CONTACT US</a></li>
         </ul>
         <div id="logoutDiv">
             <form action="#" th:action="@{/logout}"method="POST">
@@ -29,31 +63,34 @@
             </form>
         </div>
     </nav>
-    </section>
+</div>
 <!---------------------------------------body------------------------------------------------>
 
-<div class="billing">
-    <h2><font color="06113C">My Information</font></h2>
-    <hr>
-    <p>
-        User_Id : <span th:text="${user.id}" id="user1"></span><br>
-        <br>
-        Username : <span th:text="${user.name}" id="user2"></span><br>
-        <br>
-        Email : <span th:text="${user.email}" id="user3"></span><br>
-        <br>
-        State : <span th:text="${user.state}" id="user4"></span><br>
-        <br>
-        Phone : <span th:text="${user.phone}" id="user5"></span><br>
-        <br>
-        Address : <span th:text="${user.address}" id="user6"></span><br>
-        <br>
-
-    </p>
-    <br>
-    <br>
+<div id="rightimg">
+    <div class="rightimg1"> <img  src="images/pay3 (2).jpg" alt="electricity"  width="770px" ></div>
 </div>
-<script src="https://unpkg.com/aos@next/dist/aos.js"> </script>
+<div class="leftparag">
+    <div class="parag">
+        <center><h2><font color="06113C">My Information</font></h2></center>
+        <br>
+        <br>
+        <p>
+            <!-- User_Id : <span th:text="${user.id}" id="user1"></span><br>-->
+            <br>
+            My Name : <span th:text="${user.name}" id="user2"></span><br>
+            <br>
+            My Email : <span th:text="${user.email}" id="user3"></span><br>
+            <br>
+            Phone Number : <span th:text="${user.phone}" id="user5"></span><br>
+            <br>
+            My State : <span th:text="${user.state}" id="user4"></span><br>
+            <br>
+            My Address : <span th:text="${user.address}" id="user6"></span><br>
+            <br>
+        </p>
+
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"> </script>
 <script>
     AOS.init({
         duration:1000
