@@ -1,83 +1,73 @@
+<!--
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <title>My Consumption</title>
-        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
-        <link rel='icon' th:href="@{images/icon.png}">
+        <link rel="stylesheet" href="style.css">  
+        <link rel='icon'href="images/icon.png">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
-    <body>
-    <nav>
-        <ul>
-            <li> <a href ="/me">MY PROFILE</a></li>
-            <li> <a class="active" href="#">VIEW CONSUMPTION</a></li>
-            <li> <a href="/me/bill">GENERATE BILL</a></li>
-        </ul>
-        <div id="logoutDiv">
-            <form action="#" th:action="@{/logout}"method="POST">
-                <button type="submit" class="btn btn-secondary float-right" id="logout-btn">Logout</button>
-            </form>
+    <body class="three">
+        <section class="header3">
+            <nav >
+              <img class="looo" src="images/White_LOGO.png"> 
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li> <a href="home.html">HOME</a></li>
+                        <li> <a href="About.html">ABOUT US</a></li>
+                        <li> <a href="">CONTACT</a></li>
+                        <li> <a href="payment.html">PAYMENT</a></li>     
+                        <li> <a href="index.html">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="text-box">
+                <h1><font color="white">Next Generation</font></h1>
+                <h1><font color="white">Smart Grid Meter</font></h1>
+            </div>        
+        </section>
+        <br>
+        <form class="consumptions">
+            <h2 class="word"><font color="002366">Choose the dates in order to view your consumption</font></h2>
+            <br>
+            <br>
+            <div class="calender">
+                <h4 class="labelstartcal">Start Date : </h4>
+              </div>
+               <div class="calender2">
+                    <input class="startcal" type="date" id="date-picker-start">
+               </div>
+               <br>
+            <div class="calender">
+              <h4 class="labelstartcal">End Date : </h4>
+             </div>
+            <div class="calender2">
+                 <input class="startcal" type="date" id="date-picker-end">
+            </div>
+            <br>
+            <br>
+          <button onclick="sendRequest()">Click me</button>
+        </form>
+        <div class="card text-center m-5">
+            <div class="card-header">
+            <h2>My Chart</h2>
+            </div>
+        <canvas id="myChart"></canvas>
         </div>
-    </nav>
-        <section class="backgroundimg">
-                 <center>
-                 <div class="date" data-aos="fade-up" data-aos-once="false">                   
-                    <table>
-                        <tr>
-                            <td colspan="2"><p><font color="white">Please, Choose a start date and end date to view your consumption: </font></p></td>
-                        </tr>
-                        <tr>
-                            <td><font color="white"><p>Start date : </p></font></td>
-                            <td><input class="calender" type="date" id="date-picker-start"></td>
-                        </tr>
-                       <br>
-                       <br>
-                        <tr>
-                            <td><font color="white"><p>End date : </p></font></td>
-                            <td><input class="calender" type="date" id="date-picker-end"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><button class="hero-btn" onclick="sendRequest()">show down</button></td>
-                        </tr>
-                    </table>
-                 </div>
-                </center>
-                <br>
-                <hr>
-                <br>
-<!-----------------------------------------------------------Chart--------------------------------------------------------------------->
+    
         <div class="card text-center m-5">
         <div class="card-header">
         <h2>My Chart</h2>
         </div>
-             <canvas id="myChart"></canvas>
-        </div>
-        <footer>
-            <div class="footer-content">
-                <h3>Next Generation Smart Grid Meter</h3>
-                <p>Electricity can transform people's lives, not just economically but also socially</p>
-                <ul class="socials">
-                    <li><a href="https://www.facebook.com/ElsewedyElectric/"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>copyright &copy; 2022 ElSewedy Electric</p>
-            </div>
-        </footer>
-
-
-        
+    <canvas id="myChart"></canvas>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script>
+  
+  <script>
        var employeelabel = [], employeesalary = [], employeeage = [];
-       var start_global;
-       var end_global;
          async function dummyChart(){
 
             await getdata();
@@ -94,6 +84,383 @@
                 },
                 {
                 label:'My consumed energy for this week',
+                backgroundColor:'black',
+                borderColor:'#6FB2D2',
+                data:employeeage,
+                }
+            ]
+            },
+            options:{
+                tooltip:{
+                    mode: 'index'
+                }
+            }
+        });
+    }
+    dummyChart();
+        async function getdata(){
+
+            const apiurl = 'https://rooot.azurewebsites.net/reading/getReadingsOf/last/week?meterId=1';
+            const response = await fetch(apiurl);
+            const barChartData = await response.json();
+          
+            const salary = barChartData.map( (x) => x.amount);
+            const age = barChartData.map( (x) => x.energy);
+            const day = barChartData.map( (x) => x.date);
+
+            console.log(salary,age,day);
+
+            employeelabel = day;
+            employeesalary = salary;
+            employeeage = age;
+
+            }       
+    </script>
+-
+    <script>
+        var employeelabel = [], employeesalary = [], employeeage = [];
+        var x = 2022-05-01;
+       var y = 2022-05-06;
+        async function sendRequest(){
+            var dates = populateDate();     //dates: [start, end]
+            var start =  dates[0];
+            var end = dates[1];
+            dummyChart(start,end);
+        }
+     
+       async function populateDate(){
+            var start = new Date(document.getElementById("date-picker-start").value);
+            var year = start.getFullYear();
+            var month = start.getMonth()+1;
+            var day = String(start.getDate()).padStart(2,'0');
+            var startDate = year + '-' + month + '-' + day;
+            var end = new Date(document.getElementById("date-picker-end").value);
+            year = start.getFullYear();
+            month = start.getMonth()+1;
+            day = String(end.getDate()).padStart(2,'0');
+            var endDate = year + '-' + month + '-' + day;
+            return [startDate, endDate];
+        }
+
+        async function dummyChart(start,end){
+            await getdata(start,end);
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let chart =new Chart(ctx,{
+            type:'bar',
+            data:
+            {
+                labels:employeelabel,
+                datasets:[{
+                label:'My amount for this week',
+                backgroundColor:'#6FB2D2',
+                borderColor:'#6FB2D2',
+                data: employeesalary,
+                },
+                {
+                label:'My consumed energy for this week',
+                backgroundColor:'black',
+                borderColor:'#6FB2D2',
+                data:employeeage,
+                }]},
+                options:{
+                    tooltip:{
+                        mode: 'index'
+                }}});
+            }
+       dummyChart();
+      
+        async function getdata(start,end)
+        {
+            const apiurl = 'https://rooot.azurewebsites.net/reading/get/period?meterId=1&start= +x &end= +y';
+            const response = await fetch(apiurl);
+            const barChartData = await response.json();
+          
+            const salary = barChartData.map( (x) => x.amount);
+            const age = barChartData.map( (x) => x.energy);
+            const day = barChartData.map( (x) => x.date);
+
+            console.log(salary,age,day);
+
+            employeelabel = day;          //days
+            employeesalary = salary;      //amount
+            employeeage = age;           //energy
+        }
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</body>
+</html>
+-->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>My Consumption</title>
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+        <link rel='icon' th:href="@{images/icon.png}">
+        <link rel='icon'href="images/icon.png">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css" />
+       
+    </head>
+    <body>
+       <nav>
+    <div class="container">
+      <div class="logo">
+        <img src="images/Blue_logo.png" alt="logoo"/>
+        <br>   
+        <br>           
+        <h4><font color="#64bcf4">Next Generation Smart Grid Meter (NGSM)</font></h4>     
+      </div>
+
+      <div class="links">
+        <ul>
+          <li>
+            <a href="index">Home</a>
+          </li>
+          <li>
+            <a href="FAQs">FAQs</a>
+          </li>
+          <li>
+            <a href="/me/bill">Pricing</a>
+          </li>
+            <div id="logoutDiv">
+                <form action="#" th:action="@{/logout}"method="POST">
+                    <button type="submit" class="btn btn-secondary float-right" id="logout-btn">Logout</button>
+                </form>
+            </div>
+        </ul>
+      </div>
+
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+      </div>
+    </div>
+  </nav>
+  <hr>
+  <div class="header-content">
+    <div class="container grid-2">
+      <div class="column-1">
+        <h1 class="header-title">choose the date</h1>
+        <table>
+          <tr>
+              <td colspan="2"><p><font color="white">Please, Choose a start date and end date to view your consumption: </font></p></td>
+          </tr>
+          <tr>
+              <td><font color="black"><p>Start date : </p></font></td>
+              <td><input class="calender" type="date" id="date-picker-start"></td>
+          </tr>
+         <br>
+         <br>
+          <tr>
+              <td><font color="black"><p>End date : </p></font></td>
+              <td><input class="calender" type="date" id="date-picker-end"></td>
+          </tr>
+          <br>
+          <tr >
+              <td colspan="3"><button  class="btn" onclick="sendRequest()">Show my Consumption</button></td>
+          </tr>
+      </table>
+        
+      </div>
+
+      
+       <div class="rightpart">
+          
+              <div class="card-header">
+                  <h2>My Chart</h2>
+              </div>
+              <canvas id="myChart"></canvas>
+      
+  
+      </div>
+    </div>
+  </div>
+        <!--<div class="showcase-area">
+            <div class="container">
+                        <div class="leftpart">
+                            <div class="big-title">
+                                <h1>Choose the date.</h1>
+                            </div>   
+                            <table>
+                                <tr>
+                                    <td colspan="2"><p><font color="white">Please, Choose a start date and end date to view your consumption: </font></p></td>
+                                </tr>
+                                <tr>
+                                    <td><font color="black"><p>Start date : </p></font></td>
+                                    <td><input class="calender" type="date" id="date-picker-start"></td>
+                                </tr>
+                               <br>
+                               <br>
+                                <tr>
+                                    <td><font color="black"><p>End date : </p></font></td>
+                                    <td><input class="calender" type="date" id="date-picker-end"></td>
+                                </tr>
+                                <br>
+                                <tr >
+                                    <td colspan="3"><button  class="btn" onclick="sendRequest()">Show my Consumption</button></td>
+                                </tr>
+                            </table>
+                                 
+                        </div>
+        
+
+                        <div class="rightpart">
+                            <div class="card text-center m-5">
+                                <div class="card-header">
+                                    <h2>My Chart</h2>
+                                </div>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>-->
+<!-----------------------------------------------------------Chart----------------------------------------->
+         <!--  <div class="card text-center m-5">
+            <div class="card-header">
+                <h2>My Chart</h2>
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+     
+        <footer>
+            <div class="footer-content">
+                <h3>Next Generation Smart Grid Meter</h3>
+                <p>Electricity can transform people's lives, not just economically but also socially</p>
+                <ul class="socials">
+                    <li><a href="https://www.facebook.com/ElsewedyElectric/"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy; 2022 ElSewedy Electric</p>
+            </div>
+        </footer>
+    -->
+    <footer class="footer">
+        <div class="container">
+          <div class="grid-4">
+            <div class="grid-4-col footer-about">
+              <h3 class="title-sm">About</h3>
+              <p class="text">
+                Our beginnings as a manufacturer of electrical components in Egypt 80 years ago
+              </p>
+            </div>
+  
+            <div class="grid-4-col footer-links">
+              <h3 class="title-sm">Links</h3>
+              <ul>
+                <li>
+                  <a href="#services">About Us</a>
+                </li>
+                <li>
+                  <a href="#portfolio">Pricing</a>
+                </li>              
+                <li>
+                  <a href="#contact">Login</a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="grid-4-col footer-links">
+              <h3 class="title-sm">Services</h3>
+              <ul>
+                <li>
+                  <a href="#">Web Development</a>
+                </li>
+                <li>
+                  <a href="#">Mobile Development</a>
+                </li>
+                <li>
+                  <a href="#">Machine Learning</a>
+                </li>
+                <li>
+                  <a href="#">Embedded Linux</a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="grid-4-col footer-newstletter">
+              <h3 class="title-sm">Contact Us</h3>
+             
+              <div class="footer-input-wrap">
+                <input type="email" class="footer-input" placeholder="Email" />
+                <a href="#" class="input-arrow">
+                  <i class="fas fa-angle-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="bottom-footer">
+            <div class="copyright">
+              <p class="text">
+                Copyright&copy;2020 All rights reserved | Made by
+                <span>/ root</span>
+              </p>
+            </div>
+  
+            <div class="followme-wrap">
+              <div class="followme">
+                <h3>Follow Us</h3>
+                <span class="footer-line"></span>
+                <div class="social-media">
+                  <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </div>
+              </div>
+  
+              <div class="back-btn-wrap">
+                <a href="#" class="back-btn">
+                  <i class="fas fa-chevron-up"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+        
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+       var employeelabel = [], employeesalary = [], employeeage = [];
+       var start_global;
+       var end_global;
+         async function dummyChart(){
+
+            await getdata();
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let chart =new Chart(ctx,{
+            type:'bar',
+            data:{
+                labels:employeelabel,
+                datasets:[{
+                label:'My amount for this day',
+                backgroundColor:'#6FB2D2',
+                borderColor:'#6FB2D2',
+                data: employeesalary,
+                },
+                {
+                label:'My consumed energy for this day',
                 backgroundColor:'#fa8c7f',
                 borderColor:'#fa8c7f',
                 data:employeeage,
@@ -109,7 +476,7 @@
     }
         async function getdata(){
 
-          const apiurl = 'https://rooot.azurewebsites.net/reading/get/period?meterId=1&start='+start_global+'&end='+end_global;
+          const apiurl = 'https://rooot.azurewebsites.net/reading/get/period?userId=30&start='+start_global+'&end='+end_global;
             const response = await fetch(apiurl);
             const barChartData = await response.json();
 
@@ -160,3 +527,4 @@
     
 
 </body>
+</html>

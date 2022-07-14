@@ -23,6 +23,20 @@
     </style>
 </head>
 <body>
+<header>
+    <div class="links">
+        <ul>
+            <li><a href="me/index">Home</a></li>
+            <li><a href="me/chart">View Consumptions</a></li>
+            <li><a href="me/bill">Payment</a></li>
+            <div id="logoutDiv">
+                <form action="#" th:action="@{/logout}"method="POST">
+                    <button type="submit" class="btn btn-secondary float-right" id="logout-btn">Logout</button>
+                </form>
+            </div>
+        </ul>
+    </div>
+</header>
 <div class="alert alert-success fill-parent">
     <h1 class="display-5">Success</h1>
     <!--<span id="success">Operation succeeded. please Click <a th:href="@{/chart}">here</a> to continue.</span>

@@ -1,0 +1,149 @@
+<!-- model to this page:
+        userId, amount, stripePublicKey, currency
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@next/dist/aos.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+    <title>bill</title>
+    <link rel='icon' href="images/icon.png">
+</head>
+<body class="five">
+<!--------------------------------------nav-bar------------------------------------------------->
+<nav>
+    <ul>
+        <li> <a href ="/me">MY PROFILE</a></li>
+        <li> <a href="/me/chart">VIEW CONSUMPTION</a></li>
+        <li> <a class="active" href="#">GENERATE BILL</a></li>
+    </ul>
+    <div id="logoutDiv">
+        <form action="#" th:action="@{/logout}"method="POST">
+            <button type="submit" class="btn btn-secondary float-right" id="logout-btn">Logout</button>
+        </form>
+    </div>
+</nav>
+<!-------------------------------body----------------------------------------------------->
+
+<div>
+    <br>
+    <center>
+    <h2><font color="06113C">Your Receipt</font></h2>
+    </center>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                <h4>Electricity Bill</h4>
+                            </td>
+                            <td>
+                                El Sewedy Electric <br>
+                                E-mail: email@gmail.com<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="heading">
+                <td>Payment Method</td>
+                <td>Payment Currency</td>
+            </tr>
+            <tr class="details">
+                <td>Pay Online</td>
+                <td>EGP</td>
+            </tr>
+            <tr class="heading">
+                <td>Data</td>
+                <td>Details</td>
+            </tr>
+
+            <tr class="item">
+                <td>Your Name : </td>
+                <td scope="row" th:text="${bill.users.name}">Example Note Title</td>
+            </tr>
+            <tr class="item">
+                <td>E-mail : </td>
+                <td  th:text="${bill.users.email}">design</td>
+            </tr>
+            <tr class="item">
+                <td>State : </td>
+                <td  th:text="${bill.users.state}">design</td>
+            </tr>
+            <tr class="item">
+                <td>Phone number : </td>
+                <td th:text="${bill.users.phone}">Example Note Description</td>
+            </tr>
+            <tr class="item">
+                <td>Address : </td>
+                <td th:text="${bill.users.address}">Example Note Description</td>
+            </tr>
+            <tr class="item">
+                <td>Energy consumed : </td>
+                <td scope="row" th:text="${bill.energy}">Example Note Title</td>
+            </tr>
+            <tr class="item">
+                <td>Total amount of money : </td>
+                <td scope="row" th:text="${bill.amount}">Example Note Title</td>
+            </tr>
+            <tr class="item">
+                <td>Last Payment Date : </td>
+                <td cope="row"  th:if ="${bill.lastPaymentDate} == null">No previous payments</td>
+                <td cope="row"  th:unless ="${bill.lastPaymentDate} == null"  th:text="${bill.lastPaymentDate}">payments</td>
+            </tr>
+            <br>
+        </table>
+        <br>
+    </div>
+</div>
+    <br><br>
+<center>
+    <form action='/charge' method='POST' id='checkout-form'>
+        <input type='hidden' th:value='${amount}' name='amount' />
+        <input type='hidden' th:value='${userId}' name='userId' />
+        <label>Price:<span th:text='${amount/100}' /></label>
+
+        <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+        <script
+                src='https://checkout.stripe.com/checkout.js'
+                class='stripe-button'
+                th:attr='data-key=${stripePublicKey},
+             data-amount=${amount},
+             data-currency=${currency}'
+                data-name='/ROOT'
+                data-description=''
+                data-image
+                        ='https://drive.google.com/uc?id=1B4Xq9DMQkfK4HcEMHxQeBKHlnAc1yqrv'
+                data-locale='auto'
+                data-zip-code='false'>
+        </script>
+    </form>
+</center>
+<br><br>
+<!------------------------------------------------------footer---------------------------------------------------------->
+<footer>
+    <div class="footer-content">
+        <h3>Next Generation Smart Grid Meter</h3>
+        <p>Save The Planet, Save your Money</p>
+        <ul class="socials">
+            <li><a th:href="@{https://www.facebook.com/ElsewedyElectric/}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy; 2022 ElSewedy Electric</p>
+    </div>
+</footer>
+</body>
+</html>

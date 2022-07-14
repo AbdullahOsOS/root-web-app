@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+
+
+    <title>my payment result</title>
+    <style>
+    table, th, td {
+      border:1px solid black;
+    }
+    table{
+    margin-left:20px;
+    margin-right:20px;
+    margin-top: 10px;
+    width:90%;
+
+    }
+
+    </style>
+</head>
+<body>
+<div class="alert alert-success fill-parent">
+    <h1 class="display-5">Success</h1>
+    <!--<span id="success">Operation succeeded. please Click <a th:href="@{/chart}">here</a> to continue.</span>
+    -->
+</div>
+<center>
+<table cellspacing="0" border="2">
+    <tr align="center">
+        <th style="width: 20%" scope="col" >Reset Number</th>
+        <th style="width: 20%" scope="col">Amount</th>
+        <th style="width: 20%" scope="col">Payment date</th>
+    </tr>
+    <tr align="center">
+    <td scope="row" th:text="${payment.resetNo}">resetNo</td>
+    <td scope="row" th:text="${payment.amount}">amount</td>
+    <td scope="row" th:text="${payment.paymentDate}">date</td>
+    </tr>
+</table>
+</center>
+</body>
+</html>
